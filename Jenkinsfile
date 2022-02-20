@@ -3,7 +3,11 @@ pipeline{
     stages{
         stage('maven build'){
             when {
-                branch "develop"
+                expression{
+                    env.Branch_Name.equals("develop") ||
+                    env.Branch_Name.startsWith("feature")
+                }
+                
             }
             steps{
                 echo "building maven"
