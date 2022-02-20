@@ -15,8 +15,8 @@ pipeline{
         stage('sonar analysis'){
             when {
                 expression{
-                    env.BranchName.equals("develop") ||
-                    env.Branchname.startsWith("feature")
+                    env.Branch_Name.equals("develop") ||
+                    env.Branch_Name.startsWith("feature")
                 }
             }
             steps{
