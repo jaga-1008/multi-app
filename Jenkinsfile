@@ -3,7 +3,10 @@ pipeline{
     stages{
         stage('maven build'){
             when {
-                branch "develop"
+                expression{
+                    env.BranchName.equals("develop") ||
+                    env.Branchname.startsWith("feature")
+                }
             }
             steps{
                 echo "building maven"
@@ -11,7 +14,10 @@ pipeline{
         }
         stage('sonar analysis'){
             when {
-                branch "develop"
+                expression{
+                    env.BranchName.equals("develop") ||
+                    env.Branchname.startsWith("feature")
+                }
             }
             steps{
                 echo "sonarqube scanning..."
