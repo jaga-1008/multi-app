@@ -6,7 +6,7 @@ pipeline{
                 branch "develop"
             }
             steps{
-                sh "mvn package"
+                echo "building maven"
             }
         }
         stage('sonar analysis'){
